@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Time Machine Files
+.DS_Store
+
 # Distribution / packaging
 .Python
 env/

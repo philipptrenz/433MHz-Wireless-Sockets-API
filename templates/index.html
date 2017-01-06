@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css"  media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+
+	<body>		
+
+		<nav>
+			<div class="my-navbar" style="padding-left: 20px;">
+				<a class="my-brand" href="#">433MHz Python API</a>
+				<a class="my-back-button" href="index.html" onclick="">
+					<i class="fa fa-chevron-left" aria-hidden="true" id="settings-button"></i>
+				</a>
+			</div>
+		</nav>
+
+		<div class="container" style="padding-top: 25px;">		
+			<div class="table" id="switch-table">
+
+				<!--<div class="row">
+					<div class="cell">testdevice</div>
+					<div class="cell">
+						<div class="switch">
+							<label>
+								<input type="checkbox" id="01101A">
+								<span class="lever"></span>
+							</label>
+						</div>
+					</div>
+				</div>-->
+
+			</div>
+			<!--<div class="table">
+				<form class="row">
+					<div class="cell">
+						<div class="input-field">
+							<input id="new-device-id" type="text" class="validate" pattern="[01]{5}[A-G]">
+							<label for="new-device-id" data-error="no valid device id">device id</label>
+						</div>
+					</div>
+					<div class="cell">
+						<div class="input-field">
+							<input id="new-device-name" type="text" class="">
+							<label for="new-device-name">device name</label>
+						</div>
+					</div>
+					<div class="cell">
+						<a class="btn-floating btn-medium teal" type="submit"><i class="material-icons">done</i></a>
+					</div>
+				</form>
+			</div>-->
+		</div>
+		<script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+		<script>
+
+			let secret = 'test';
+
+	    	$( document ).ready(function() {
+				loadDevices();
+			});
+
+			function loadDevices() {
+				console.log('loading list of devices ...')
+				$.ajax({
+		            type: "POST",
+		            url: "/list",
+		            async: true,
+		            data: JSON.stringify({ secret: secret }),
+		            contentType: "application/json",
+		            complete: function (data) {
+		            	responseArray = data.responseJSON;
+
+		            	$('#switch-table').empty();
+
+		            	console.log('parsing list of '+responseArray.length+" devices ...")
+
+		            	for (var i=0; i<responseArray.length; i++){
+		            		var device = responseArray[i].device
+		            		var name = responseArray[i].name
+		            		var state = responseArray[i].state
+		            		html = '<div class="row"><div class="cell">'+name+'</div><div class="cell"><div class="switch"><label><input type="checkbox" class="device-switches" id="'+device+'"><span class="lever"></span></label></div></div></div>';
+		            		$('#switch-table').append(html);
+		            		$('#'+device).prop('checked', state == 'on' ? true : false);
+		            	}
+		            	wait = false;
+		            	/* Button event */
+						$('input.device-switches').on('change', function() {
+							if ($(this).prop('checked')) {
+								$.get($(this).attr('id')+'/on');
+							} else {
+								$.get($(this).attr('id')+'/off');
+							}
+						});
+						console.log(responseArray.length+" devices loaded");
+		        	}
+		    	});
+			}
+
+		</script>
+	</body>
+</html>
