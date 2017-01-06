@@ -15,7 +15,7 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 NAME=433PyApi
-DAEMON=/home/pi/433PyApi/433PyApi.py
+DAEMON=/home/pi/RaspberryPi-433MHz-Remote-Switches-Web-Controller/433PyApi.py
 DAEMONARGS=""
 PIDFILE=/var/run/$NAME.pid
 LOGFILE=/var/log/$NAME.log
