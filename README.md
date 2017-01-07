@@ -1,7 +1,17 @@
 # RaspberryPi-433MHz-Remote-Switches-Web-Controller
-This project provides a web api, written in python, to control cheap Remote Control Switches based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks. Have fun!
+This project provides a web api, written in python, to control cheap Remote Control Switches based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks.
 
-**NOTICE: Still in development, many features are still missing! Feel free to ask and to report bugs!
+Features:
+* Trigger rc switches to turn on and off via GET requests
+* Store ('bookmark'), remove and list your devices with name and state via POST requests
+* Simple web interface to control and manage your remote control switches
+
+Planned features:
+* Scheduler for time and event based tasks
+* Improve security
+* Code documentation (yeah, sorry ...)
+
+**Feel free to ask, report bugs and improve!**
 
 ## What it is
 
@@ -42,8 +52,9 @@ Now you can start and stop your script via `sudo service 433PyApi start` or `sto
 
 ### Hardware
 
-I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, but also other ones should work. Connect the transmitter like in the image below to the Pi:
+I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, but also other ones should work. Connect the transmitter to the Pi like in the illustration below:
 
+```
 	_____________
 	|	 ___	|
 	|  /   	 \	|
@@ -57,7 +68,8 @@ I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, bu
 	|	|	|_ 5V - pin 4
 	|	|_ data - gpio 17
 	|_ ground - pin 6
-	
+```
+
 
 ## Get started
 
