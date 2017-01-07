@@ -12,6 +12,8 @@ To get it a bit more comfortable the project also includes a small web interface
 
 ## Install
 
+### Software
+
 ```bash
 # install needed dependencies
 sudo apt-get install git python3 python3-pip python-rpi.gpio
@@ -38,6 +40,24 @@ sudo update-rc.d 433PyApi.sh defaults
 ```
 Now you can start and stop your script via `sudo service 433PyApi start` or `stop` and it automatically starts on boot.
 
+### Hardware
+
+I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, but also other ones should work. Connect the transmitter like in the image below to the Pi:
+
+	_____________
+	|	 ___	|
+	|  /   	 \	|
+	| |		  |	|
+	|  \ ___ /	|
+	|___________|
+	|	|	|	|
+	|	|	|	|
+
+	|	|	|	|_ antenna - 17cm cable
+	|	|	|_ 5V - pin 4
+	|	|_ data - gpio 17
+	|_ ground - pin 6
+	
 
 ## Get started
 

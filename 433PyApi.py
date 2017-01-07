@@ -2,12 +2,10 @@
 """
 
 """
-import flask
+import time, atexit, re, flask
 from flask import Flask, render_template, request, json, jsonify
 import RPi.GPIO as GPIO
-import time, atexit, re
 from tinydb import TinyDB, Query
-from tinydb.operations import delete
 
 app = Flask(__name__)
 
@@ -19,36 +17,25 @@ def home():
 
 @app.route('/<device_id>/on', methods=['GET', 'POST'])
 def switchOn(device_id):
-	device_id = device_id[0:7]
-	if device_regex.match(device_id):
-		print('turned ', device_id, ' on')
-		remoteSwitch.switchOn(device_id)
-		db.switch_state(device_id, 'on')
-		return 'switched on'
-	else:
-		print('device id not matching regex')
-		flask.abort(400)
+	device_id = validate_device_id(device_id)
+	print('turned ', device_id, ' on')
+	remoteSwitch.switchOn(device_id)
+	db.switch_state(device_id, 'on')
+	return 'switched on'
 
 @app.route('/<device_id>/off', methods=['GET', 'POST'])
 def switchOff(device_id):
-	device_id = device_id[0:7]
-	if device_regex.match(device_id):
-		print('turned ', device_id, ' off')
-		remoteSwitch.switchOff(device_id)
-		db.switch_state(device_id, 'off')
-		return 'switched off'
-	else:
-		print('device id not matching regex')
-		flask.abort(400)
+	device_id = validate_device_id(device_id)
+	print('turned ', device_id, ' off')
+	remoteSwitch.switchOff(device_id)
+	db.switch_state(device_id, 'off')
+	return 'switched off'
 
 ###############################################
 
 @app.route('/<device_id>/add', methods=['POST'])
 def add(device_id):
-	device_id = device_id[0:7]
-	if not device_regex.match(device_id):
-		print('device id not matching regex')
-		flask.abort(400)
+	device_id = validate_device_id(device_id)
 	if is_authorized(request):
 		if request.headers['Content-Type'] == 'application/json':
 			content = request.json
@@ -67,10 +54,7 @@ def add(device_id):
 
 @app.route('/<device_id>/remove', methods=['POST'])
 def remove(device_id):
-	device_id = device_id[0:7]
-	if not device_regex.match(device_id):
-		print('device id not matching regex')
-		flask.abort(400)
+	device_id = validate_device_id(device_id)
 	if is_authorized(request):
 		return db.remove(device_id)
 
@@ -79,6 +63,33 @@ def list():
 	if is_authorized(request):
 		devices_list = db.list()
 		return jsonify(devices_list)
+
+
+#######################################################################
+
+def validate_device_id(device_id):
+	device_id = device_id[0:5]+device_id[5].upper()
+	if not device_regex.match(device_id):
+		print('device id not matching regex')
+		flask.abort(400)
+	return device_id
+
+
+def is_authorized(request):
+	if request.headers['Content-Type'] == 'application/json':
+		newInput = request.json
+		if 'secret' in newInput and newInput['secret'] == secret:
+			print('request authorized')
+			return True
+	elif request.args['secret'] == secret:
+		print('request authorized')
+		return True
+	else:
+		flask.abort(550)
+
+
+def cleanup():
+	GPIO.cleanup()
 
 #######################################################################
 
@@ -182,25 +193,6 @@ class Database:
 		if eid is False: return False # does not exist
 		self.devices_table.update({'state':state}, eids=[eid])
 		return True
-
-
-
-#######################################################################
-
-def cleanup():
-	GPIO.cleanup()
-
-def is_authorized(request):
-	if request.headers['Content-Type'] == 'application/json':
-		newInput = request.json
-		if 'secret' in newInput and newInput['secret'] == secret:
-			print('request authorized')
-			return True
-	elif request.args['secret'] == secret:
-		print('request authorized')
-		return True
-	else:
-		flask.abort(550)
 
 
 #######################################################################
