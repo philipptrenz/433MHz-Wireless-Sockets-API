@@ -1,6 +1,15 @@
 # RaspberryPi-433MHz-Remote-Switches-Web-Controller
 This project provides a web api, written in python, to control cheap Remote Control Switches based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks.
 
+## What it is
+
+I searched for an easy to use web api to control 433MHz Remote Control Switches, like the ones from Elro, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
+
+So this project provides a simple web API with a few endpoints to control and bookmark 433MHz RC Switches via HTTP. To turn a Switch on, you can do an HTTP-Get to `http://<ip-of-your-pi>/11011A/on`,  where `11011` is your house code and *A* is the identifier of the switch.
+To get it a bit more comfortable the project also includes a web interface to turn the switches on and off. And of course it's responsive ;)
+
+![screenshot 1](/screenshots/screen_1.png?raw=true)
+
 Features:
 * Trigger rc switches to turn on and off via GET requests
 * Store ('bookmark'), remove and list your devices with name and state via POST requests
@@ -12,15 +21,6 @@ Planned features:
 * Code documentation (yeah, sorry ...)
 
 **Feel free to ask, report bugs and improve!**
-
-## What it is
-
-I searched for an easy to use web api to control 433MHz Remote Control Switches, like the ones from Elro, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
-
-So this project provides a simple web API with a few endpoints to control and bookmark 433MHz RC Switches via HTTP. To turn a Switch on, you can do an HTTP-Get to `http://<ip-of-your-pi>/11011A/on`,  where `11011` is your house code and *A* is the identifier of the switch.
-To get it a bit more comfortable the project also includes a web interface to turn the switches on and off. And of course it's responsive ;)
-
-![screenshot 1](/screenshots/screen_1.png?raw=true)
 
 ## Install
 
