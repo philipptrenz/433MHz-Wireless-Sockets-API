@@ -84,10 +84,10 @@ When you just want to control your switches, install the project and navigate in
 
 The switch should now appear above. Now switch back to the first page and you see your switch ready to work.
 
-<img src="./screenshots/mobile_3.png?raw=true" alt="screenshot" style="height: 200px;"/>
-<img src="./screenshots/desktop_1.png?raw=true" alt="screenshot" style="height: 200px;"/>
-<img src="./screenshots/mobile_2.png?raw=true" alt="screenshot" style="height: 200px;"/>
-<img src="./screenshots/desktop_2.png?raw=true" alt="screenshot" style="height: 200px;"/>
+<img src="./screenshots/mobile_3.png?raw=true" alt="screenshot" style="max-height: 200px;"/>
+<img src="./screenshots/desktop_1.png?raw=true" alt="screenshot" style="max-height: 200px;"/>
+<img src="./screenshots/mobile_2.png?raw=true" alt="screenshot" style="max-height: 200px;"/>
+<img src="./screenshots/desktop_2.png?raw=true" alt="screenshot" style="max-height: 200px;"/>
 
 
 ### Extended
