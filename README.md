@@ -82,6 +82,11 @@ When you just want to control your switches, install the project and navigate in
 * Now choose a name for this switch
 * Click the green button
 
+![screenshot 1](/screenshots/mobile_3.png?raw=true)
+![screenshot 2](/screenshots/desktop_1.png?raw=true)
+![screenshot 3](/screenshots/mobile_2.png?raw=true)
+![screenshot 4](/screenshots/desktop_2.png?raw=true)
+
 The switch should now appear above. Now switch back to the first page and you see your switch ready to work.
 
 ### Extended
