@@ -13,6 +13,8 @@ Planned features:
 
 **Feel free to ask, report bugs and improve!**
 
+![screenshot 1](/screenshots/screen_1.png?raw=true)
+
 ## What it is
 
 I searched for an easy to use web api to control 433MHz Remote Control Switches, like the ones from Elro, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
@@ -82,10 +84,9 @@ When you just want to control your switches, install the project and navigate in
 * Now choose a name for this switch
 * Click the green button
 
-![screenshot 1](/screenshots/screen_1.png?raw=true)
-![screenshot 2](/screenshots/screen_2.png?raw=true)
-
 The switch should now appear above. Now switch back to the first page and you see your switch ready to work.
+
+![screenshot 2](/screenshots/screen_2.png?raw=true)
 
 ### Extended
 
