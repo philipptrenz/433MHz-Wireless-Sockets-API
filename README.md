@@ -1,19 +1,18 @@
 # 433MHz Wireless Sockets API
-This project provides a web api, written in python, to control cheap remote control sockets based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks, a Raspberry Pi and some minutes to get it installed.
+This project provides a RESTlike web API, written in Python, to control cheap remote control sockets based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks, a Pi and some minutes to get it running.
 
 ## What it is
 
-I searched for an easy to use web api to control 433MHz wireless sockets, like the ones from Elro or Mumbi, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
+I searched for an easy to use web API to control 433MHz wireless sockets, like the ones from Elro or Mumbi via WLAN. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (German, sorry), but I'm more the Python guy and wanted a flexible communication to build my own apps and extensions.
 
-So this project provides a simple RESTlike web API with a few endpoints to control and bookmark 433MHz wireless sockets via HTTP. To turn a socket on, you can do an HTTP-Get to `http://<ip-of-your-pi>/11011A/on`,  where `11011` is your house code and `A` is the identifier of the switch.
-To get it a bit more comfortable the project also includes a web interface to turn the sockets on and off. And of course it's responsive ;)
+So this project provides a simple API with a few endpoints to control and bookmark 433MHz wireless sockets via HTTP. To get it a bit more comfortable the project also includes a web interface to turn the sockets on and off. And of course it's responsive ;)
 
 ![screenshot 1](/screenshots/screen_1.png?raw=true)
 
 Features:
 * Trigger wireless sockets to turn on and off via GET requests
 * Store ('bookmark'), remove and list your devices with name and state via POST requests
-* Simple web interface to control and manage your remote control switches
+* Simple web interface to control and manage your remote control sockets
 
 Planned features (in this order):
 * MacOS Status Bar App (coming soon)
