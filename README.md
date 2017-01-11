@@ -1,21 +1,22 @@
-# RaspberryPi-433MHz-Remote-Switches-Web-Controller
-This project provides a web api, written in python, to control cheap Remote Control Switches based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks.
+# 433MHz Wireless Sockets API
+This project provides a web api, written in python, to control cheap remote control sockets based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks.
 
 ## What it is
 
-I searched for an easy to use web api to control 433MHz Remote Control Switches, like the ones from Elro, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
+I searched for an easy to use web api to control 433MHz wireless sockets, like the ones from Elro or Mumbi, via my Raspberry Pi. Previously I used [PowerPi](http://raspberrypiguide.de/howtos/powerpi-raspberry-pi-haussteuerung/) (sorry, it's German), but I'm more the Python guy and wanted a more flexible communication.
 
-So this project provides a simple web API with a few endpoints to control and bookmark 433MHz RC Switches via HTTP. To turn a Switch on, you can do an HTTP-Get to `http://<ip-of-your-pi>/11011A/on`,  where `11011` is your house code and *A* is the identifier of the switch.
-To get it a bit more comfortable the project also includes a web interface to turn the switches on and off. And of course it's responsive ;)
+So this project provides a simple RESTlike web API with a few endpoints to control and bookmark 433MHz wireless sockets via HTTP. To turn a socket on, you can do an HTTP-Get to `http://<ip-of-your-pi>/11011A/on`,  where `11011` is your house code and `A` is the identifier of the switch.
+To get it a bit more comfortable the project also includes a web interface to turn the sockets on and off. And of course it's responsive ;)
 
 ![screenshot 1](/screenshots/screen_1.png?raw=true)
 
 Features:
-* Trigger rc switches to turn on and off via GET requests
+* Trigger wireless sockets to turn on and off via GET requests
 * Store ('bookmark'), remove and list your devices with name and state via POST requests
 * Simple web interface to control and manage your remote control switches
 
-Planned features:
+Planned features (in this order):
+* MacOS Status Bar App (coming soon)
 * Scheduler for time and event based tasks
 * Improve security
 * Code documentation (yeah, sorry ...)
@@ -32,8 +33,8 @@ sudo apt-get install git python3 python3-pip python-rpi.gpio
 sudo pip install flask 
 
 # clone this repo
-git clone https://github.com/philipptrenz/RaspberryPi-433MHz-Remote-Switches-Web-Controller
-cd RaspberryPi-433MHz-Remote-Switches-Web-Controller
+git clone https://github.com/philipptrenz/433MHz-Wireless-Sockets-API
+cd 433MHz-Wireless-Sockets-API
 
 # and start
 sudo python3 433PyApi.py
@@ -77,33 +78,33 @@ I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, bu
 
 ### For an easy use
 
-When you just want to control your switches, install the project and navigate in a browser to the ip address of your Raspberry Pi. You will see an quite empty webpage
-* Click on the gear at the top right. Now you can bookmark your switches
-* First of all type in the house code of your remote controlled switches
-* Followed by the letter of the specific switch
-* Now choose a name for this switch
+When you just want to control your sockets, install the project and navigate in a browser to the ip address of your Raspberry Pi. You will see an quite empty webpage
+* Click on the gear at the top right. Now you can bookmark your sockets
+* First of all type in the house code of your remote controlled sockets
+* Followed by the letter of the specific socket
+* Now choose a name for this socket
 * Click the green button
 
-The switch should now appear above. Now switch back to the first page and you see your switch ready to work.
+The socket should now appear above. Now switch back to the first page and you see your socket ready to work.
 
 ![screenshot 2](/screenshots/screen_2.png?raw=true)
 
 ### Extended
 
-Besides the web interface you can speak directly to the Web API. For turning switches on and off use a simple GET request like:
+Besides the web interface you can speak directly to the Web API. For turning sockets on and off use a simple GET request like:
 
 ```bash
 curl http://<ip-of-your-pi>/11011A/on
 curl http://<ip-of-your-pi>/11011A/off
 ```
 
-Additionally you can use POST requests to bookmark, update, remove and list switches:
+Additionally you can use POST requests to bookmark, update, remove and list sockets:
 ```bash
-curl -H "Content-Type: application/json" -X POST -d '{"secret":"test","name":"My First Switch", "state":"off"}' http://<ip-of-your-pi/11011A/add
+curl -H "Content-Type: application/json" -X POST -d '{"secret":"test","name":"My First Socket", "state":"off"}' http://<ip-of-your-pi/11011A/add
 ```
-Repeat this for all of your Switches. You can use this endpoint also to update data. The `state` is optional and can be `on` and `off`.
+Repeat this for all of your sockets. You can use this endpoint also to update data. The `state` is optional and can be `on` and `off`.
 
-You can also remove bookmarked switches:
+You can also remove bookmarked sockets:
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{"secret":"test"}' http://<ip-of-your-pi/11011A/remove
 ```
