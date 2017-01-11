@@ -1,5 +1,5 @@
 # 433MHz Wireless Sockets API
-This project provides a web api, written in python, to control cheap remote control sockets based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks.
+This project provides a web api, written in python, to control cheap remote control sockets based on 433 MHz via a Raspberry Pi. It also provides a web interface for a handy use of the API. All you need is a 433 MHz RF transmitter for a few bucks, a Raspberry Pi and some minutes to get it installed.
 
 ## What it is
 
