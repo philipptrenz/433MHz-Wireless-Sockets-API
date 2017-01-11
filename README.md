@@ -30,7 +30,7 @@ Planned features (in this order):
 ```bash
 # install needed dependencies
 sudo apt-get install git python3 python3-pip python-rpi.gpio
-sudo pip install flask 
+sudo pip install flask tinydb
 
 # clone this repo
 git clone https://github.com/philipptrenz/433MHz-Wireless-Sockets-API
