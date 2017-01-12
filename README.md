@@ -13,9 +13,9 @@ Features:
 * Trigger wireless sockets to turn on and off via GET requests
 * Store ('bookmark'), remove and list your devices with name and state via POST requests
 * Simple web interface to control and manage your remote control sockets
+* [MacOS Status Bar App](https://github.com/philipptrenz/433MHz-Wireless-Sockets-MacOS-App)
 
 Planned features (in this order):
-* MacOS Status Bar App (coming soon)
 * Scheduler for time and event based tasks
 * Improve security
 * Code documentation (yeah, sorry ...)
