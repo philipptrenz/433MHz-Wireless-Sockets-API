@@ -57,18 +57,17 @@ Now you can start and stop your script via `sudo service 433PyApi start` or `sto
 I used [this](http://www.watterott.com/de/RF-Link-Sender-434MHz) transmitter, but also others should work. Connect the transmitter to the Pi like this:
 
 ```
-	_____________
-	|	 ___	|
-	|  /   	 \	|
-	| |		  |	|
-	|  \ ___ /	|
+	 ___________
+	|    ___    |
+	|  /   	 \  |
+	| |	  | |
+	|  \ ___ /  |
 	|___________|
-	|	|	|	|
-	|	|	|	|
-
-	|	|	|	|_ antenna - 17cm cable
-	|	|	|_ 5V - pin 4
-	|	|_ data - gpio 17
+	|   |	|   |
+	|   |	|   |
+	|   |	|   |_ antenna - 17cm cable
+	|   |	|_ 5V - pin 4
+	|   |_ data - gpio 17
 	|_ ground - pin 6
 ```
 
