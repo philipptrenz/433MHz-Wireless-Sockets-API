@@ -28,8 +28,8 @@ Planned features (in this order):
 
 ```bash
 # install needed dependencies
-sudo apt-get install git python3 python3-pip python-rpi.gpio
-sudo pip install flask tinydb
+sudo apt-get install git python3 python3-pip
+sudo pip3 install flask tinydb RPi.GPIO
 
 # clone this repo
 git clone https://github.com/philipptrenz/433MHz-Wireless-Sockets-API
@@ -43,10 +43,10 @@ If you want to run the script as a service on every boot:
 ```bash
 # make the scripts executable
 sudo chmod 755 433PyApi.py
-sudo chmod 755 433PyApi.sh
 
 # add the bash script to the service folder
 sudo cp 433PyApi.sh /etc/init.d
+chmod 755 /etc/init.d/433PyApi.sh
 sudo update-rc.d 433PyApi.sh defaults
 
 ```
