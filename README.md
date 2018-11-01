@@ -45,9 +45,9 @@ If you want to run the script as a service on every boot:
 sudo chmod 755 433PyApi.py
 
 # add the bash script to the service folder
-sudo cp 433PyApi.sh /etc/init.d
-chmod 755 /etc/init.d/433PyApi.sh
-sudo update-rc.d 433PyApi.sh defaults
+sudo cp 433PyApi.sh /etc/init.d/433PyApi
+sudo chmod 755 /etc/init.d/433PyApi
+sudo update-rc.d 433PyApi defaults
 
 ```
 Now you can start and stop your script via `sudo service 433PyApi start` or `stop` and it automatically starts on boot.
